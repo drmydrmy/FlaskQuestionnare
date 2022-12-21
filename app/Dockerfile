@@ -1,3 +1,4 @@
-FROM python:3-onbuild
-COPY . /usr/src/app
+FROM python:3.9
+COPY . .
+RUN pip install --no-cache-dir -r requirements.txt
 CMD ["python", "myapp.py"]
