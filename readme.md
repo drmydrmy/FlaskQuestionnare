@@ -1,9 +1,13 @@
 Ссылка на сайт на pythonanywhere: drmy.pythonanywhere.com
 
 #### Docker:
-Для запуска:
+Для запуска:  
+
 ```docker-compose up```
-Просмотр по адресу:
+
+Просмотр по адресу:  
+
 ```http://127.0.0.1:5000```
-Для завершения
+Для завершения:  
+
 ```docker-compose stop```
