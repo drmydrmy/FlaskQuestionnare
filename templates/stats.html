@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} Статистика {% endblock %}
+
+{% block content %}
+    <h1>Статистика</h1>
+    <div class="row row-cols-4 g-3">
+        {% for stat in statistics %}
+            <div class="col">
+                <div class="rounded shadow bg-light p-1">
+                    <p class="fs-4"> {{stat[0]}}</p>
+                    <p class="fs-5"> {{stat[1]}} </p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

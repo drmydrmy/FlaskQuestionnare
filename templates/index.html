@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} Главная {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h1 class="h1">Примите участие в простом опросе!</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <p>
+            Наш опрос посвящен изучению вопросов описанных в опросе!
+        </p>
+        <p>
+            Ваши ответы <strong>абсолютно</strong> анонимны!
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <a class="btn btn-primary" href="/form">Перейти к вопросам</a>
+    </div>
+</div>
+{% endblock %}

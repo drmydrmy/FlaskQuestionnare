@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %} Опрос {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h1 class="h1">Анкета</h1>
+    </div>
+</div>
+<div class="row text-center justify-content-center">
+    <div class="col-4">
+        <h2 class="h2">
+            Немного о себе
+        </h2>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <h1 class="text-danger">{{message}}</h1>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form class="" method="get" action="/process">
+            <div class="rounded bg-light shadow">
+                <div class="bg-light mb-2 p-3 border-bottom">
+                    <label for="age" class="form-label">Ваш возраст</label>
+                    <input type="text" class="form-control" name="age" id="age">
+                </div>
+                <div class="rounded bg-light mb-2 p-3 text-start border-bottom">
+                    <div class="mb-2">
+                        Ваш пол
+                    </div>
+                    <div class="form-check">
+                        <label for="radio_gender_m" class="form-check-label">Мужской</label>
+                        <input type="radio" class="form-check-input" name="gender" id="radio_gender_m" value="m">
+                    </div>
+                    <div class="form-check">
+                        <label for="radio_gender_f" class="form-check-label">Женский</label>
+                        <input type="radio" class="form-check-input" name="gender" id="radio_gender_f" value="f">
+                    </div>
+                    <div class="form-check">
+                        <label for="radio_gender_other" class="form-check-label">Другой</label>
+                        <input type="radio" class="form-check-input" name="gender" id="radio_gender_other" value="other">
+                    </div>
+                </div>
+                <div class="rounded bg-light mb-2 p-3 text-center border-bottom">
+                    <div class="mb-2">
+                        Ваш уровень образования
+                    </div>
+                    <select class="form-select" name="education">
+                        <option value="kindergarten">Детский сад</option>
+                        <option value="school_9">9 классов школы</option>
+                        <option value="school_11">11 классов школы</option>
+                        <option value="college">Среднее специальное</option>
+                        <option value="student">Неоконченное высшее</option>
+                        <option value="bachelor">Бакалавриат/специалитет</option>
+                        <option value="master">Магистратура</option>
+                        <option value="phd">Аспирантура</option>
+                        <option value="candidate">Кандидат наук</option>
+                        <option value="doctor">Доктор наук</option>
+                    </select>
+                </div>
+                <div class="rounded bg-light mb-2 p-3">
+                    <div class="mb-2">
+                        Откуда вы узнали об опросе
+                    </div>
+                    <select class="form-select" name="source">
+                        <option value="search">Поисковые системы</option>
+                        <option value="friend">Знакомые</option>
+                        <option value="ads">Реклама</option>
+                        <option value="random">Случайно</option>
+                    </select>
+                </div>
+            </div>
+            <h2>
+                Вопросы
+            </h2>
+            <div class="rounded bg-light shadow">
+                {% for question in questions %}
+                    <div class="rounded bg-light mb-2 p-3">
+                        <div class="mb-2">
+                            {{question.text}}
+                        </div>
+                        <select class="form-select" name="q{{question.id}}">
+                            <option value="-2">Крайне отрицательно</option>
+                            <option value="-1">Отрицательно</option>
+                            <option value="0">Нейтрально</option>
+                            <option value="1">Положительно</option>
+                            <option value="2">Крайне положительно</option>
+                        </select>
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-primary mt-3 mb-3">Отправить ответы</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
